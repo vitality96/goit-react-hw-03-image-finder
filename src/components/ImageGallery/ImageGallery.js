@@ -3,21 +3,18 @@ import PropTypes from 'prop-types';
 import s from './ImageGallery.module.css';
 
 const ImageGallery = ({ images, handlePreview }) => {
-  const renderGallery = () =>
-    images.map(({ id, webformatURL, tags }) => (
+  return (
+    <ul className={s.ImageGallery}>
+      {images.map(({ id, webformatURL, tags }) => (
       <ImageGalleryItem
         className={s.ImageGalleryItem}
         key={id}
         tags={tags}
         smImage={webformatURL}
         onClick={() => handlePreview(id)}
-      />
-    ));
-
-  return (
-    <div>
-      <ul className={s.ImageGallery}>{images ? renderGallery() : null}</ul>
-    </div>
+        />
+    ))}
+    </ul>
   );
 };
 

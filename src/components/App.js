@@ -6,7 +6,7 @@ import ImageGallery from './ImageGallery/ImageGallery';
 import Modal from './ImageGallery/Modal/Modal';
 import Button from './Button/Button';
 import Loader from './Loader/Loader';
-import { fetchImages } from 'components/services/fetchImages';
+import { fetchImages } from '../services/fetchImages';
 
 export default class App extends Component {
   state = {
@@ -90,18 +90,15 @@ export default class App extends Component {
   };
 
   render() {
-    const { images, isLoading, error, showModal } = this.state;
+    const { images, isLoading, error, showModal, galleryPage } = this.state;
+    const btnDisable = images.length / galleryPage === 12;
     return (
       <>
         <Searchbar onSearch={this.handleSearchSubmit} />
         {error && toast.error(`Whoops, something went wrong: ${error.message}`)}
         {isLoading && <Loader color={'#3f51b5'} size={32} />}
-        {images.length > 0 && (
-          <>
-            <ImageGallery images={images} handlePreview={this.showModalImage} />
-            <Button loadMore={this.loadMore} />
-          </>
-        )}
+        {images.length > 0 && <ImageGallery images={images} handlePreview={this.showModalImage} />}
+        {btnDisable && <Button loadMore={this.loadMore} />}
         {showModal && (
           <Modal
             lgImage={showModal.largeImageURL}

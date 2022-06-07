@@ -22,7 +22,7 @@ export default class Searchbar extends Component {
       return toast.warning('Search field is empty!');
     }
     this.props.onSearch(this.state.searchRequest);
-    this.setState({ searchRequest: '' });
+    this.setState({ searchRequest: this.state.searchRequest });
   };
 
   render() {

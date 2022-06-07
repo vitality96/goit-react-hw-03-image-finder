@@ -32,8 +32,8 @@ export default class Modal extends Component {
   render() {
     const { lgImage, tags } = this.props;
     return (
-      <div className={s.Overlay} onClick={this.handleBackdropClick}>
-        <div className={s.Modal}>
+      <div className={s.overlay} onClick={this.handleBackdropClick}>
+        <div className={s.modal}>
           <img src={lgImage} alt={tags} />
         </div>
       </div>

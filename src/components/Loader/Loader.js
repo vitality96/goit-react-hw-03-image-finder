@@ -2,6 +2,7 @@ import { HollowDotsSpinner } from 'react-epic-spinners';
 import PropTypes from 'prop-types';
 import s from './Loader.module.css';
 
+
 const Loader = ({ color, size }) => {
   return (
     <div className={s.Loader}>
